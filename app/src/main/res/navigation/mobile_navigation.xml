@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_read">
+    <fragment
+        android:id="@+id/nav_read"
+        android:name="mx.edu.ittepic.ladm_u1_practica2_alamacenamiento_de_archivos.ui.read.ReadFragment"
+        android:label="Leer"
+        tools:layout="@layout/fragment_read" />
+
+    <fragment
+        android:id="@+id/nav_update"
+        android:name="mx.edu.ittepic.ladm_u1_practica2_alamacenamiento_de_archivos.ui.update.UpdateFragment"
+        android:label="Editar"
+        tools:layout="@layout/fragment_update" />
+
+    <fragment
+        android:id="@+id/nav_create"
+        android:name="mx.edu.ittepic.ladm_u1_practica2_alamacenamiento_de_archivos.ui.create.CreateFragment"
+        android:label="Crear"
+        tools:layout="@layout/fragment_create" />
+    <fragment
+        android:id="@+id/nav_delete"
+        android:name="mx.edu.ittepic.ladm_u1_practica2_alamacenamiento_de_archivos.ui.delete.DeleteFragment"
+        android:label="Borrar"
+        tools:layout="@layout/fragment_delete" />
+</navigation>
