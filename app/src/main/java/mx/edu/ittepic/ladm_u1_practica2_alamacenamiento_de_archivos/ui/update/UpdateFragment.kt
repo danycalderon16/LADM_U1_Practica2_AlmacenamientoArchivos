@@ -112,10 +112,10 @@ class UpdateFragment : Fragment() {
             cars[i] = model.text.toString().trim() +" "+ brand.text.toString().trim()
             adapterCars.notifyDataSetChanged()
             guardarEnArchivo()
+            Toast.makeText(requireContext(),"Auto actualizado", Toast.LENGTH_SHORT).show()
             builder.dismiss()
         }
 
-        builder.setCanceledOnTouchOutside(false)
         builder.show()
     }
 

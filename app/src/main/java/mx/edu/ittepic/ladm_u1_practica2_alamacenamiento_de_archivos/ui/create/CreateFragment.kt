@@ -48,12 +48,13 @@ class CreateFragment : Fragment() {
     private fun leerEnArchivo(){
         try {
             val archivo = InputStreamReader(requireActivity().openFileInput("archivo.txt"))
-
+            var c =""
             var listaContenido = archivo.readLines()
             listaContenido.forEach {
-                //Log.i("%%%%%%%%%%%",it)
                 cars.add(it)
+                c += it+"\n"
             }
+            Log.i("%%%%%%%%%%% C57",c)
             archivo.close()
 
         }catch (e:Exception){
@@ -66,6 +67,9 @@ class CreateFragment : Fragment() {
 
     private fun guardarEnArchivo() {
         try {
+            cars.clear()
+
+            Log.i("%%%%%%%%%%% C 72",""+cars.size)
             leerEnArchivo()
             var cadena = ""
             cars.forEach {
