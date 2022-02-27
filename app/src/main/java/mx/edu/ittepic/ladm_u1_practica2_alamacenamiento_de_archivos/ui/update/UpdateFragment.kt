@@ -16,7 +16,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import mx.edu.ittepic.ladm_u1_practica2_alamacenamiento_de_archivos.R
 import mx.edu.ittepic.ladm_u1_practica2_alamacenamiento_de_archivos.adapter.MyAdapterCars
 import mx.edu.ittepic.ladm_u1_practica2_alamacenamiento_de_archivos.databinding.FragmentUpdateBinding
+import java.io.File
 import java.io.InputStreamReader
+import java.io.OutputStreamWriter
 
 class UpdateFragment : Fragment() {
 
@@ -102,17 +104,45 @@ class UpdateFragment : Fragment() {
 
         builder.setView(view)
         button.setOnClickListener {
-
-            Log.i("%%%%%%%%%%%",car+" - "+model.text.toString()+" "+brand.text.toString())
-            cars[i] = model.text.toString() +" "+ brand.text.toString()
+            var c = ""
+            cars.forEach {
+                c+=it+"\n"
+            }
+            Log.i("%%%%%%%%%%% U 110",c)
+            cars[i] = model.text.toString().trim() +" "+ brand.text.toString().trim()
             adapterCars.notifyDataSetChanged()
-
+            guardarEnArchivo()
             builder.dismiss()
         }
 
-
-
         builder.setCanceledOnTouchOutside(false)
         builder.show()
+    }
+
+    private fun guardarEnArchivo(){
+        try {
+            var c = ""
+            cars.forEach {
+                c+=it+"\n"
+            }
+            Log.i("%%%%%%%%%%% U 128",c)
+
+            val fileName = "/data/data/mx.edu.ittepic.ladm_u1_practica2_alamacenamiento_de_archivos/files/archivo.txt"
+            var file = File(fileName)
+            file.delete()
+
+            val archivo = OutputStreamWriter(requireContext().openFileOutput("archivo.txt", 0))
+            archivo.write(c)
+            archivo.flush()
+            archivo.close()
+            Log.i("%%%%%%%%%%%","main")
+
+        } catch (e: Exception) {
+            AlertDialog.Builder(requireContext())
+                .setTitle("Error guardar")
+                .setMessage(e.message.toString())
+                .show()
+        }
+
     }
 }
