@@ -37,16 +37,14 @@ class ReadFragment : Fragment() {
         _binding = FragmentReadBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        leerEnArchivo()
         val rv = binding.rvCars
-        val adapter = MyAdapterCars(cars,object: MyAdapterCars.onItemClickListenr {
+        val adapter = MyAdapterCars(cars, object : MyAdapterCars.onItemClickListenr {
             override fun onItemClick(position: Int) {
-                Log.i("$$$$$$$$$$4",cars[position])
+                Log.i("$$$$$$$$$$4", cars[position])
             }
 
         })
-        Log.i("%%%%%%%%%%%","read")
-        leerEnArchivo()
-
         rv.layoutManager = LinearLayoutManager(requireContext())
         rv.adapter = adapter
 
@@ -58,18 +56,19 @@ class ReadFragment : Fragment() {
         _binding = null
     }
 
-    private fun leerEnArchivo(){
+    private fun leerEnArchivo() {
         try {
             val archivo = InputStreamReader(requireActivity().openFileInput("archivo.txt"))
-
+            cars.removeAll(cars)
             var listaContenido = archivo.readLines()
             listaContenido.forEach {
-                Log.i("%%%%%%%%%%%",it)
+                Log.i("%%%%%%%%%%%R 65 Lista", it)
                 cars.add(it)
             }
+
             archivo.close()
 
-        }catch (e:Exception){
+        } catch (e: Exception) {
             AlertDialog.Builder(requireContext())
                 .setTitle("Error leer readF")
                 .setMessage(e.message.toString())

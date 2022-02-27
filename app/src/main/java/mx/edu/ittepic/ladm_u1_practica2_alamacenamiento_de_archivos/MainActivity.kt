@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
             Log.i("########3","Existe.")
         } else {
             Log.i("########3","No existe.")
-            guardarEnArchivo("")
+            guardarEnArchivo("Ibiza Seat\nFiesta Ford")
         }
 
         binding = ActivityMainBinding.inflate(layoutInflater)

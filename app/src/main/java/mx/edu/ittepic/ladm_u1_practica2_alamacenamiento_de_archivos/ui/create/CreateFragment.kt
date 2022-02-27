@@ -69,14 +69,15 @@ class CreateFragment : Fragment() {
             leerEnArchivo()
             var cadena = ""
             cars.forEach {
-            //    cadena += it +"\n"
+                cadena += it +"\n"
             }
+            Log.i("%%%%%%%%%%%C 74 antes",cadena)
             val archivo = OutputStreamWriter(requireActivity().openFileOutput("archivo.txt",0))
 
             cadena += binding.model.text.toString().trim()+" " +
                     binding.brand.text.toString().trim()+"\n"
 
-            //Log.i("%%%%%%%%%%%",cadena)
+            Log.i("%%%%%%%%%%%C 80 despues",cadena)
             archivo.write(cadena)
             archivo.flush()
             archivo.close()
