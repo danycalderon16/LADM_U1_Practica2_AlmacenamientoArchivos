@@ -29,7 +29,6 @@ class UpdateFragment : Fragment() {
     private val binding get() = _binding!!
 
     val cars = arrayListOf<String>()
-    val aux_cars = arrayListOf<String>()
     private lateinit var adapterCars: MyAdapterCars
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,13 +44,11 @@ class UpdateFragment : Fragment() {
         val rv = binding.rvCars
         adapterCars = MyAdapterCars(cars,object: MyAdapterCars.onItemClickListenr {
             override fun onItemClick(position: Int) {
-                Log.i("$$$$$$$$$$4",cars[position])
                 showdialog(cars[position], position)
             }
 
         })
 
-        Log.i("%%%%%%%%%%%","read")
         leerEnArchivo()
 
         rv.layoutManager = LinearLayoutManager(requireContext())
@@ -71,7 +68,6 @@ class UpdateFragment : Fragment() {
 
             var listaContenido = archivo.readLines()
             listaContenido.forEach {
-                Log.i("%%%%%%%%%%%",it)
                 cars.add(it)
             }
             archivo.close()
@@ -93,14 +89,15 @@ class UpdateFragment : Fragment() {
         val  button = view.findViewById<Button>(R.id.btn_add_v)
         button.setText("Actualizar")
 
-        var model = view.findViewById<EditText>(R.id.model_v)
-        var brand = view.findViewById<EditText>(R.id.brand_v)
+        val model = view.findViewById<EditText>(R.id.model_v)
+        val brand = view.findViewById<EditText>(R.id.brand_v)
+        val price = view.findViewById<EditText>(R.id.price_v)
 
-        var car_list = car.split(" ")
-        model.setText(car_list[0])
-
-        Log.i("%%%%%%%%%%%",""+car_list.size+" "+car)
-        brand.setText(car_list[1])
+        //Log.i("Update ",""+car_list.size+" "+car)
+        val carList = car.split(" ")
+        model.setText(carList[0])
+        brand.setText(carList[1])
+        price.setText(carList[2])
 
         builder.setView(view)
         button.setOnClickListener {
@@ -108,7 +105,6 @@ class UpdateFragment : Fragment() {
             cars.forEach {
                 c+=it+"\n"
             }
-            Log.i("%%%%%%%%%%% U 110",c)
             cars[i] = model.text.toString().trim() +" "+ brand.text.toString().trim()
             adapterCars.notifyDataSetChanged()
             guardarEnArchivo()
@@ -125,7 +121,6 @@ class UpdateFragment : Fragment() {
             cars.forEach {
                 c+=it+"\n"
             }
-            Log.i("%%%%%%%%%%% U 128",c)
 
             val fileName = "/data/data/mx.edu.ittepic.ladm_u1_practica2_alamacenamiento_de_archivos/files/archivo.txt"
             var file = File(fileName)
@@ -135,13 +130,13 @@ class UpdateFragment : Fragment() {
             archivo.write(c)
             archivo.flush()
             archivo.close()
-            Log.i("%%%%%%%%%%%","main")
 
         } catch (e: Exception) {
             AlertDialog.Builder(requireContext())
                 .setTitle("Error guardar")
                 .setMessage(e.message.toString())
                 .show()
+            Log.i("Error Update 140",""+e.message)
         }
 
     }

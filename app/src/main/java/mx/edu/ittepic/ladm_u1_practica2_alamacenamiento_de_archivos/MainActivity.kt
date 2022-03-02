@@ -39,11 +39,10 @@ class MainActivity : AppCompatActivity() {
         var file = File(fileName)
         var fileExists = file.exists()
         if(fileExists){
-            Log.i("########3","Existe.")
+            Log.i("MA 42","Existe.")
         } else {
-            Log.i("########3","No existe.")
-
-            guardarEnArchivo("Ibiza Seat\nFiesta Ford")
+            Log.i("MA 44","No existe.")
+            guardarEnArchivo("Ibiza Seat 32000\nFiesta Ford 450000")
         }
 
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -91,7 +90,6 @@ class MainActivity : AppCompatActivity() {
             archivo.write(car)
             archivo.flush()
             archivo.close()
-            Log.i("%%%%%%%%%%%","main")
 
         } catch (e: Exception) {
             AlertDialog.Builder(this)
@@ -100,31 +98,5 @@ class MainActivity : AppCompatActivity() {
                 .show()
         }
 
-    }
-
-    fun showdialog():String {
-
-        var car =""
-        val builder = AlertDialog.Builder(this)
-            .create()
-        builder.setTitle("Agregar Auto")
-        val view = layoutInflater.inflate(R.layout.view_add_car,null)
-        val  button = view.findViewById<Button>(R.id.btn_add_v)
-        builder.setView(view)
-        button.setOnClickListener {
-            var model = view.findViewById<EditText>(R.id.model_v).text.toString()
-            var brand = view.findViewById<EditText>(R.id.brand_v).text.toString()
-
-            if(model.isEmpty() || brand.isEmpty()){
-                Toast.makeText(this,"Ingrese todos los campos",Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-            car += model+" "+brand+"\n"
-            builder.dismiss()
-        }
-
-        builder.setCanceledOnTouchOutside(false)
-        builder.show()
-        return car
     }
 }

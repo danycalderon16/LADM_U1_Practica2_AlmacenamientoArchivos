@@ -6,42 +6,73 @@
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
     android:background="@color/teal_700"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
     android:padding="10dp"
     app:cardCornerRadius="5dp"
-    app:cardElevation="4dp"
-    android:clickable="true"
-    android:foreground="?android:attr/selectableItemBackground">
+    app:cardElevation="4dp">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:paddingLeft="10dp">
+
+        <TextView
+            android:id="@+id/brand_cv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:text="Seat"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/model_cv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="6dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="6dp"
+            android:layout_toEndOf="@+id/brand_cv"
+            android:layout_toRightOf="@id/brand_cv"
+            android:text="Ibiza"
+            android:textSize="24sp" />
+
         <ImageView
-            android:id="@+id/img_brand"
-            android:padding="10dp"
+            android:id="@+id/img_brand_cv"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/ford"/>
-        <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="0dp"
+            android:padding="10dp"
+            android:src="@drawable/ford" />
+
+        <TextView
+            android:id="@+id/price_cv"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp">
+            android:layout_below="@+id/brand_cv"
+            android:layout_marginTop="10dp"
+            android:text="$200000"
+            android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/model"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Ibiza"
-                android:textSize="32sp" />
-            <TextView
-                android:id="@+id/brand"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Seat"
-                android:textSize="20sp"
-                android:textStyle="italic"/>
-
-        </LinearLayout>
-    </LinearLayout>
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/model_cv"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="17dp"
+            android:layout_toRightOf="@+id/price_cv"
+            android:background="#80D583"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="Envio gatis"
+            android:textColor="#099800"
+            android:textStyle="italic" />
+    </RelativeLayout>
 </androidx.cardview.widget.CardView>

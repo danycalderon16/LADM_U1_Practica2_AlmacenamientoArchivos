@@ -7,18 +7,18 @@
         <item
             android:id="@+id/nav_read"
             android:icon="@drawable/ic_baseline_list_24"
-            android:title="Leer" />
+            android:title="@string/catalogo" />
         <item
             android:id="@+id/nav_create"
             android:icon="@drawable/ic_baseline_add_24"
-            android:title="Crear" />
+            android:title="@string/add_car" />
         <item
             android:id="@+id/nav_update"
             android:icon="@drawable/ic_baseline_edit_24"
-            android:title="Editar" />
+            android:title="@string/edit_car" />
         <item
             android:id="@+id/nav_delete"
-            android:icon="@drawable/ic_baseline_delete_24"
-            android:title="Borrar" />
+            android:icon="@drawable/ic_baseline_attach_money_24"
+            android:title="@string/vender" />
     </group>
 </menu>

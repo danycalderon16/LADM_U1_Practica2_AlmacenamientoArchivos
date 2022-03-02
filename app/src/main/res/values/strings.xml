@@ -12,4 +12,8 @@
     <string name="menu_slideshow">Slideshow</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="catalogo">Catalogo</string>
+    <string name="add_car">Agregar Auto</string>
+    <string name="edit_car">Edita Información</string>
+    <string name="vender">Vender Auto</string>
 </resources>

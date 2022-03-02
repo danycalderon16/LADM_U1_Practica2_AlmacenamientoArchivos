@@ -54,7 +54,6 @@ class CreateFragment : Fragment() {
                 cars.add(it)
                 c += it+"\n"
             }
-            Log.i("%%%%%%%%%%% C57",c)
             archivo.close()
 
         }catch (e:Exception){
@@ -69,25 +68,24 @@ class CreateFragment : Fragment() {
         try {
             cars.clear()
 
-            Log.i("%%%%%%%%%%% C 72",""+cars.size)
             leerEnArchivo()
             var cadena = ""
             cars.forEach {
                 cadena += it +"\n"
             }
-            Log.i("%%%%%%%%%%%C 74 antes",cadena)
             val archivo = OutputStreamWriter(requireActivity().openFileOutput("archivo.txt",0))
 
-            cadena += binding.model.text.toString().trim()+" " +
+            cadena += binding.model.text.toString().trim()+" "+
+                    binding.price.text.toString()+" "+
                     binding.brand.text.toString().trim()+"\n"
 
-            Log.i("%%%%%%%%%%%C 80 despues",cadena)
             archivo.write(cadena)
             archivo.flush()
             archivo.close()
 
             binding.model.setText("")
             binding.brand.setText("")
+            binding.price.setText("")
             AlertDialog.Builder(requireContext())
                 .setMessage("Se guardo correctamente")
                 .setPositiveButton("Ok",{d,i-> d.dismiss()})

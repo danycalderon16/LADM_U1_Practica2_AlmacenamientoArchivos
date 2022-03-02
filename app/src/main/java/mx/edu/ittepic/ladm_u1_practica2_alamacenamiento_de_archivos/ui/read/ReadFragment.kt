@@ -41,7 +41,7 @@ class ReadFragment : Fragment() {
         val rv = binding.rvCars
         val adapter = MyAdapterCars(cars, object : MyAdapterCars.onItemClickListenr {
             override fun onItemClick(position: Int) {
-                Log.i("$$$$$$$$$$4", cars[position])
+                Log.i("Click ReadF 44",cars[position])
             }
 
         })
@@ -62,7 +62,7 @@ class ReadFragment : Fragment() {
             cars.removeAll(cars)
             var listaContenido = archivo.readLines()
             listaContenido.forEach {
-                Log.i("%%%%%%%%%%%R 65 Lista", it)
+                Log.i("Read 65 Lista", it)
                 cars.add(it)
             }
 
@@ -73,6 +73,7 @@ class ReadFragment : Fragment() {
                 .setTitle("Error leer readF")
                 .setMessage(e.message.toString())
                 .show()
+            Log.i("Read 76 Lista", e.message+"")
         }
     }
 }
