@@ -14,4 +14,6 @@ MTI SERGIO BENIGNO CASTILLO VALTIERRA
 
 ![avatar](img2.jpeg)  
 
+![avatar](img3.jpeg)  
+
 ![avatar](img4.jpeg)  
